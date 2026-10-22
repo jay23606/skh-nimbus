@@ -65,7 +65,11 @@ export function HoldButton({ onComplete, durationMs = 1500, label, children, dis
       onKeyDown={(e) => {
         if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) {
           e.preventDefault()
-          begin()
+          if (!done.current && !disabled) {
+            done.current = true
+            setProgress(1)
+            onComplete()
+          }
         }
       }}
       onKeyUp={(e) => (e.key === ' ' || e.key === 'Enter') && cancel()}

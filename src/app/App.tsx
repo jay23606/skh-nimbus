@@ -4,6 +4,7 @@ import { createBrowserRouter, Navigate, Outlet, RouterProvider, useNavigate } fr
 import { useWorkflow } from '@/core/workflow/store'
 import { UnconfirmedWarning } from '@/ui/UnconfirmedWarning'
 import { scanBarcode, signOut } from './actions'
+import { FocusOnNavigation } from './FocusOnNavigation'
 import { resolveScreen } from './definition'
 import { useExperienceId } from './experience'
 import { useBarcode } from './hooks'
@@ -22,6 +23,7 @@ function ExperienceRoot() {
   return (
     <MotionConfig reducedMotion="user">
       <WorkflowNavigator />
+      <FocusOnNavigation />
       <SessionWatcher />
       <BarcodeListener />
       <StepAwayWarning />
